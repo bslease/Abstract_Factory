@@ -240,10 +240,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8473ec8b75b72334bb5d0f77d0a8ec61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfWheels: 2
+  NumberOfWheels: 1
   Engine: 0
   Passengers: 1
-  Cargo: 1
+  Cargo: 0
 --- !u!4 &895716639
 Transform:
   m_ObjectHideFlags: 0

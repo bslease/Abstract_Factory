@@ -40,13 +40,16 @@ public class Client : MonoBehaviour
         // call create on the factory to get an appropriate vehicle
         // and return it
 
-        VehicleFactory factory = new VehicleFactory();
+        //VehicleFactory factory = new VehicleFactory();
 
-        if (requirements.Engine)
-        {
-            return factory.MotorVehicleFactory().Create(requirements);
-        }
+        //if (requirements.Engine)
+        //{
+        //    return factory.MotorVehicleFactory().Create(requirements);
+        //}
 
-        return factory.CycleFactory().Create(requirements);
+        //return factory.CycleFactory().Create(requirements);
+
+        VehicleFactory factory = new VehicleFactory(requirements);
+        return factory.Create();
     }
 }

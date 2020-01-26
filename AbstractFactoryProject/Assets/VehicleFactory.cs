@@ -38,22 +38,38 @@ public class MotorVehicleFactory : IVehicleFactory
 
 public abstract class AbstractVehicleFactory
 {
-    public abstract IVehicleFactory CycleFactory();
-    public abstract IVehicleFactory MotorVehicleFactory();
+    //public abstract IVehicleFactory CycleFactory();
+    //public abstract IVehicleFactory MotorVehicleFactory();
+
+    public abstract IVehicle Create();
 }
 
 
 
 public class VehicleFactory : AbstractVehicleFactory
 {
-    public override IVehicleFactory CycleFactory()
+    //public override IVehicleFactory CycleFactory()
+    //{
+    //    return new CycleFactory();
+    //}
+
+    //public override IVehicleFactory MotorVehicleFactory()
+    //{
+    //    return new MotorVehicleFactory();
+    //}
+
+    private readonly IVehicleFactory _factory;
+    private readonly VehicleRequirements _requirements;
+
+    public VehicleFactory(VehicleRequirements requirements)
     {
-        return new CycleFactory();
+        _factory = requirements.Engine ? (IVehicleFactory) new MotorVehicleFactory() : new CycleFactory();
+        _requirements = requirements;
     }
 
-    public override IVehicleFactory MotorVehicleFactory()
+    public override IVehicle Create()
     {
-        return new MotorVehicleFactory();
+        return _factory.Create(_requirements);
     }
 }
 
